@@ -1,12 +1,12 @@
-//08.Construa um programa que leia duas strings do teclado. Imprima uma mensagem informando se a segunda string lida está contida dentro da primeira. (estude a função strstr() que realiza esta tarefa) 
+//09. Construa um programa que leia duas strings do teclado. Imprima uma mensagem informando quantas vezes a segunda string lida está contida dentro da primeira. 
 
 
 
-//joão victor. If23. 
+//joão victor. if23. 
 
 #include <iostream>
 
-#include <cstring>
+#include <string>
 
 
 
@@ -16,33 +16,39 @@ int main() {
 
 
 
-    char primeiraString[100];
-
-    char segundaString[100];
+    string primeiraString, segundaString;
 
 
 
     cout << "Digite a primeira string: ";
 
-    cin.getline(primeiraString, 100);
+    getline(cin, primeiraString);
 
 
 
     cout << "Digite a segunda string: ";
 
-    cin.getline(segundaString, 100);
+    getline(cin, segundaString);
 
 
 
-    if (strstr(primeiraString, segundaString) != nullptr) {
+    int contador = 0;
 
-        cout << "A segunda string esta contida na primeira string.\n";
+    size_t pos = 0;
 
-    } else {
 
-        cout << "A segunda string nao esta contida na primeira string.\n";
+
+    while ((pos = primeiraString.find(segundaString, pos)) != string::npos) {
+
+        contador++;
+
+        pos += segundaString.length();
 
     }
+
+
+
+    cout << "A segunda string ocorre " << contador << " vez(es) na primeira string.\n";
 
 
 
